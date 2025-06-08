@@ -1,0 +1,290 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santos Barber's Shop - Estilo y Precisión</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+     <style>
+        /* Pantalla de entrada */
+       #pantalla-entrada {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #fdfdfd, #e8e8e8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    text-align: center;
+    color: #111;
+    font-family: 'Montserrat', sans-serif;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#pantalla-entrada h1 {
+    font-size: 3.2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #222;
+}
+
+#pantalla-entrada p {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #444;
+}
+
+/* Botón de entrar - estilo claro */
+#entrarBtn {
+    padding: 18px 50px;
+    font-size: 22px;
+    background: linear-gradient(135deg, #ff5e5e, #d40000);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+    z-index: 0;
+}
+
+#entrarBtn::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 0,
+        rgba(255, 255, 255, 0.05) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    z-index: 1;
+    animation: stripes-move 3s linear infinite;
+    pointer-events: none;
+    border-radius: 50px;
+}
+
+#entrarBtn::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+    transform: rotate(25deg);
+    animation: shine 2.5s linear infinite;
+    pointer-events: none;
+    border-radius: 50px;
+    z-index: 2;
+}
+
+/* Animaciones */
+@keyframes stripes-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
+}
+
+#entrarBtn.oculto {
+    opacity: 0;
+    transform: translateY(-150px) scale(0.8);
+    pointer-events: none;
+}
+
+
+        /* Contenido oculto al principio */
+        #contenido {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+      
+<!-- Pantalla de entrada -->
+<div id="pantalla-entrada">
+     <p>SANTOS BARBER'S SHOP <br>TU ESTILO COMIENZA AQUI!</p>  <!-- Texto agregado arriba del botón -->
+    <button id="entrarBtn">Entrar</button>
+</div>
+
+<audio id="audio" src="hola.mp3" preload="auto"></audio>
+<!-- Contenido oculto al principio -->
+<div id="contenido">
+  <!-- HERO -->
+    <main>
+        <section id="hero" class="hero-video enhanced-hero">
+            <div class="hero-background-overlay"></div>
+            <video autoplay loop muted class="hero-background-video">
+                <source src="barbershop-hero.mp4" type="video/mp4" />
+            </video>
+            <div class="hero-content-wrapper">
+                <div class="hero-content">
+                    <div class="hero-logo-container">
+                        <h1 class="hero-logo glitch" data-text="Santos Barber's">Santos Barber's</h1>
+                        <div class="hero-tagline-container">
+                            <span class="hero-tagline">Estilo Urbano · Cortes Modernos</span>
+                        </div>
+                    </div>
+                    <div class="hero-description">
+                        <p class="animated-text">Transformando tu imagen, un corte a la vez</p>
+                    </div>
+                </div>
+                <div class="hero-contact-info">
+                    <a href="tel:5560812122" class="contact-phone neon-text">
+                        <i class="fas fa-phone-alt"></i> 55-60-81-21-22
+                    </a>
+                </div>
+                <div class="hero-contact-info">
+                    <a href="tel:5544264294" class="contact-phone neon-text">
+                        <i class="fas fa-phone-alt"></i> 55-44-26-42-94
+                    </a>
+                </div>
+                <div class="hero-contact-info">
+                    <a href="https://wa.me/5560812122" target="_blank" class="contact-whatsapp neon-text">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section id="servicios">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Cada corte, una obra maestra</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card service-card-premium" data-aos="flip-left">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Corte Desvanecido</h3>
+                    <p>Estilo moderno y preciso</p>
+                    <div class="service-hover">
+                        <span class="price">$120</span>
+                    </div>
+                </div>
+                <div class="service-card" data-aos="flip-up">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Corte Básico</h3>
+                    <p>Corte clásico y limpio</p>
+                    <div class="service-hover">
+                        <span class="price">$100</span>
+                    </div>
+                </div>
+                <div class="service-card service-card-extras" data-aos="flip-right">
+                    <div class="service-icon">
+                        <i class="fas fa-beard"></i>
+                    </div>
+                    <h3>Servicios Adicionales</h3>
+                    <p>Diseño y cuidado personal</p>
+                    <div class="service-details">
+                        <p>Barba: <span class="price">$30</span></p>
+                        <p>Ceja con Diseño: <span class="price">$20</span></p>
+                        <p>Laminado de Ceja: <span class="price">$50</span></p>
+                        <p>Mascarilla Facial: <span class="price">$20</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UBICACIÓN -->
+        <section id="ubicacion" class="location-section expanded">
+            <div class="location-container">
+                <div class="location-info">
+                    <h2>Nuestra Barbería</h2>
+                    <p>Santos Barber Shop - Donde el estilo se transforma</p>
+                    <div class="location-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Dirección: Calle Ote 3 #72, Floresta, 57840 Los Reyes Acaquilpan, Méx.</p>
+                        <p><i class="fas fa-phone"></i> Teléfono: 55-44-26-42-94</p>
+                        <p><i class="fas fa-clock"></i> Horario: Lun-Mar 12:00 AM - 8:00 PM, Jue-Dom 12:00 - 8:00</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.7139524220144!2d-98.96640012471873!3d19.388980286883644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e2ff5f7f0001%3A0x9e1a1ba4dfc40a7b!2sCalle%20Ote.%203%20%2372%2C%20Floresta%2C%2057840%20Los%20Reyes%20Acaquilpan%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1706473456699"
+                        width="600"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Santos Barber's</h3>
+                <p>Barbería Profesional</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <a href="#hero">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#ubicacion">Ubicación</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/marcossantoscolin" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1FTMKgKdWa/" class="facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/5560812122" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Santos Barber's Shop. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</div> <!-- Fin de #contenido -->
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+    const entrarBtn = document.getElementById('entrarBtn');
+    entrarBtn.addEventListener('click', () => {
+        const audio = document.getElementById('audio');
+        audio.play().catch(err => {
+            console.log("Error al reproducir el audio:", err);
+        });
+
+        // Animar el botón para desaparecer hacia arriba
+        entrarBtn.classList.add('oculto');
+
+        // Después de la animación, ocultar pantalla entrada y mostrar contenido
+        setTimeout(() => {
+            document.getElementById('pantalla-entrada').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
+        }, 700); // duración de la transición
+    });
+</script>
+
+</body>
+</html>
